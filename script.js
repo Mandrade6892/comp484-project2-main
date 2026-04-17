@@ -39,9 +39,32 @@ function clickedPlayButton() {
     checkAndUpdatePetInfoInHtml();
 }
 
+function clickedExerciseButton() {
+  pet_info.happiness -= 1;
+  pet_info.weight -= 2;
+  energy -= 1;
+
+    $('.pet-message').text("Buddy says: I'm tired!");
+    $('.pet-message').toggle();
+    $('.pet-message').toggle();
+
+    checkAndUpdatePetInfoInHtml();
+}
+
+function clickedNapButton() {
+  energy += 4;
+  pet_info.happiness += 1;
+
+    $('.pet-message').text("Buddy says: That was a nice nap!");
+    $('.pet-message').toggle();
+    $('.pet-message').toggle();
+
+    checkAndUpdatePetInfoInHtml();
+}
+
 function checkAndUpdatePetInfoInHtml(){
   checkWeightAndHappinessBeforeUpdating();
-  checkAndUpdatePetInfoInHtml();
+  updatePetInfoInHtml();
 }
 
 function checkWeightAndHappinessBeforeUpdating() {
@@ -59,3 +82,16 @@ function checkWeightAndHappinessBeforeUpdating() {
 
 }
 
+function updatePetInfoInHtml() {
+  $('.name').text(pet_info.name);
+  $('.weight').text(pet_info.weight);
+  $('.happiness').text(pet_info.happiness);
+  $('.energy').text(energy);
+
+  // jQuery Method #2
+    if (pet_info.happiness <= 2) {
+      $('.happiness').addClass("warning");
+    } else {
+      $('.happiness').removeClass("warning");
+    }
+}
