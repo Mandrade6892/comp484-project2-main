@@ -1,5 +1,6 @@
 $(function() {
 
+    // bind click events buttons to every action function
   checkAndUpdatePetInfoInHtml();
     $('.treat-button').click(clickedTreatButton);
     $('.play-button').click(clickedPlayButton);
@@ -7,15 +8,19 @@ $(function() {
     $('.nap-button').click(clickedNapButton);
   
 });
-
+// pet core attributes
 var pet_info = {
   name: "Buddy",
   weight: 15,
   happiness: 8
 };
-
+// nap feature attribute
 var energy = 10;
-
+// treat = +2 happiness, +1 weight
+// play = +3 happiness, -1 weight, -2 energy
+// exercise = -1 happiness, -2 weight, -1 energy
+// nap = +4 energy, +1 happiness
+// toggle method is used to show and hide the pet message when an action button is clicked
 function clickedTreatButton(){
   pet_info.happiness += 2;
   pet_info.weight += 1;
